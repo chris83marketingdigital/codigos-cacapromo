@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça-Promoções - Comparador Inteligente</title>
+    <!-- Leaflet CSS para o Mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="cabecalho-principal">
+        <h1>🛒 Caça-Promoções</h1>
+        <p>Encontre o menor preço comparando encartes de supermercados com IA</p>
+    </header>
+
+    <div class="navegacao-abas">
+        <button class="btn-aba ativo" data-aba="aba-comparador">📊 Comparador & Mapa</button>
+        <button class="btn-aba" data-aba="aba-lista-casa">📝 Minha Lista de Casa</button>
+    </div>
+
+    <!-- ================= ABAS ================= -->
+    <main>
+        <!-- ABA 1: COMPARADOR E MAPA -->
+        <section id="aba-comparador" class="conteudo-aba">
+            
+            <!-- SEÇÃO DE MAPA E GPS -->
+            <div class="bloco-card">
+                <h3>📍 Localização e Raio de Cobertura</h3>
+                <p id="status-gps" class="status-texto">A obter localização via GPS...</p>
+                <div id="mapa"></div>
+                
+                <div class="controles-raio">
+                    <span class="rotulo-raio">Raio de Busca: <strong id="valor-raio">1.5 km</strong></span>
+                    <input type="range" id="slider-raio" min="0.5" max="10" step="0.5" value="1.5">
+                    <div class="botoes-transporte">
+                        <button class="btn-transporte ativo" data-raio="0.5">🚶‍♂️ A pé (500m)</button>
+                        <button class="btn-transporte" data-raio="1.5">🚴‍♂️ Bike (1.5km)</button>
+                        <button class="btn-transporte" data-raio="5">🚗 Carro (5km)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO DE VITRINE DE DESTAQUES -->
+            <div class="bloco-card">
+                <h3>🏆 Campeões de Preço (Mais Baratos)</h3>
+                <div id="vitrine-destaques" class="grid-destaques">
+                    <div class="aviso-vazio">Nenhum encarte real escaneado ainda.</div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO DE BUSCA E COMPARADOR -->
+            <div class="bloco-card">
+                <h3>🔍 Comparador Inteligente de Preços</h3>
+                <div class="container-busca">
+                    <input type="text" id="busca-produto" placeholder="Ex: Leite, Sabão, Arroz, Café...">
+                </div>
+                <div id="painel-comparador">
+                    <div class="aviso-vazio">Escaneie os encartes abaixo para ver a comparação de preços.</div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 4: ESCANEAMENTO DE ENCARTES (COM 2 BOTÕES: CÂMERA E GALERIA) -->
+            <div class="bloco-card destaque-escanear">
+                <h3>📸 4. Escanear Encartes com IA</h3>
+                <p>Escolha tirar a foto na hora ou carregar várias páginas da galeria:</p>
+                
+                <!-- Inputs invisíveis separados -->
+                <input type="file" id="input-camera" accept="image/*" capture="environment" style="display: none;">
+                <input type="file" id="input-galeria" accept="image/*" multiple style="display: none;">
+
+                <!-- Botões de Ação Personalizados -->
+                <div class="grupo-botoes-captura">
+                    <button type="button" id="btn-abrir-camera" class="btn-captura btn-camera">
+                        📸 Tirar Foto com a Câmera
+                    </button>
+                    <button type="button" id="btn-abrir-galeria" class="btn-captura btn-galeria">
+                        📂 Escolher da Galeria (Múltiplas)
+                    </button>
+                </div>
+
+                <div id="container-previews" class="container-previews"></div>
+
+                <button id="btn-ler-ia" class="btn-principal">🚀 Processar Encartes com IA</button>
+                <div id="resultado-ia"></div>
+
+                <div class="acoes-limpeza">
+                    <button id="btn-limpar-lista" class="btn-secundario btn-perigo">🗑️ Limpar Encartes e Histórico</button>
+                    <button id="btn-desfazer" class="btn-secundario" style="display:none;">↩️ Desfazer Limpeza</button>
+                </div>
+            </div>
+
+            <!-- HISTÓRICO DE ENCARTES -->
+            <div class="bloco-card">
+                <h3>📜 Histórico de Encartes Lidos</h3>
+                <div id="historico-encartes">
+                    <div class="aviso-vazio">Nenhum encarte lido nesta sessão.</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ABA 2: MINHA LISTA DE CASA -->
+        <section id="aba-lista-casa" class="conteudo-aba" style="display: none;">
+            <div class="bloco-card">
+                <h3>📝 Minha Lista de Compras para Casa</h3>
+                <div class="container-input-casa">
+                    <input type="text" id="input-item-casa" placeholder="Adicionar item (ex: Arroz, Sabão em Pó)...">
+                    <button id="btn-add-casa" class="btn-principal">Adicionar</button>
+                </div>
+                <ul id="lista-compras-casa" class="lista-compras">
+                    <div class="aviso-vazio">Sua lista de casa está vazia.</div>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ COM A SUA AUTORIA -->
+    <footer class="rodape-autor">
+        <p>Desenvolvido por <strong>Cristian Santos</strong> • Caça-Promoções © 2026</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+</html>

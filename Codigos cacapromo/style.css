@@ -1,0 +1,351 @@
+:root {
+    --cor-primaria: #2563eb;
+    --cor-primaria-hover: #1d4ed8;
+    --cor-fundo: #f8fafc;
+    --cor-cartao: #ffffff;
+    --cor-texto: #0f172a;
+    --cor-texto-secundario: #475569;
+    --borda-raio: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cabecalho-principal {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.cabecalho-principal h1 {
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+}
+
+.cabecalho-principal p {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+}
+
+.navegacao-abas {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.btn-aba {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #e2e8f0;
+    color: var(--cor-texto-secundario);
+    font-weight: bold;
+    border-radius: var(--borda-raio);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-aba.ativo {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.bloco-card {
+    background: var(--cor-cartao);
+    padding: 16px;
+    border-radius: var(--borda-raio);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    margin-bottom: 16px;
+}
+
+.bloco-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--cor-texto);
+}
+
+.status-texto {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 8px;
+}
+
+#mapa {
+    height: 220px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.controles-raio {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rotulo-raio {
+    font-size: 0.9rem;
+}
+
+#slider-raio {
+    width: 100%;
+}
+
+.botoes-transporte {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-transporte {
+    flex: 1;
+    padding: 6px;
+    font-size: 0.75rem;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-transporte.ativo {
+    background: #eff6ff;
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    font-weight: bold;
+}
+
+.grid-destaques {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cartao-destaque {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.mercado-tag {
+    font-size: 0.75rem;
+    background: #dcfce7;
+    color: #166534;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.cartao-destaque h4 {
+    font-size: 1rem;
+    margin: 6px 0 2px 0;
+}
+
+.marca-gramatura {
+    font-size: 0.8rem;
+    color: var(--cor-texto-secundario);
+}
+
+.preco-campeao {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #16a34a;
+    margin-top: 4px;
+}
+
+.container-busca {
+    margin-bottom: 12px;
+}
+
+#busca-produto {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.card-confronto {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.linha-mercado-preco {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+}
+
+.linha-mercado-preco.vencedor {
+    background: #f0fdf4;
+    padding: 6px;
+    border-radius: 6px;
+    color: #15803d;
+    font-weight: bold;
+}
+
+.destaque-escanear {
+    border: 2px dashed #93c5fd;
+    background: #f0fdf4;
+}
+
+/* Estilo para os dois botões de captura separados */
+.grupo-botoes-captura {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.btn-captura {
+    padding: 14px;
+    border: none;
+    border-radius: var(--borda-raio);
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-camera {
+    background: #0284c7;
+    color: white;
+}
+
+.btn-galeria {
+    background: #0f172a;
+    color: white;
+}
+
+.container-previews {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.tag-arquivo-selecionado {
+    background: #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #334155;
+}
+
+.btn-principal {
+    width: 100%;
+    padding: 12px;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: var(--borda-raio);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.acoes-limpeza {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.btn-secundario {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.btn-perigo {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.card-historico {
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.container-input-casa {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.container-input-casa input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.lista-compras {
+    list-style: none;
+}
+
+.item-casa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.item-casa.riscado .nome-item-casa {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.badge-match {
+    background: #dcfce7;
+    color: #166534;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.badge-sem-match {
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.aviso-vazio {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+    padding: 10px;
+}
+
+/* Rodapé de Autoria */
+.rodape-autor {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    border-top: 1px solid #e2e8f0;
+    margin-top: 20px;
+}
